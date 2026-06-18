@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no" />
+  <title>مزاد لوحات السيارات</title>
+
+  <!-- PWA: installable + offline -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#143751">
+
+  <!-- iOS "Add to Home Screen" support -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="مزاد اللوحات">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+
+  <!-- Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <div class="page">
+    <div class="upper-panel">
+
+      <!-- 1. Logo Section -->
+      <div class="section logo-section">
+        <img class="logo-img" src="assets/logo.svg" alt="ديوان اللوحات المميزة - KSA">
+        <div class="plate-type-label" id="plateTypeLabel">لوحة مميزة</div>
+      </div>
+
+      <!-- 2. Plate Display Section -->
+      <div class="section plate-section">
+        <div class="plate-display letters-dual shape-plate-1" id="plateDisplay">
+          <img class="plate-bg-img" id="plateBgImg" src="assets/plates/plate-1.svg" alt="شكل اللوحة المختار">
+          <div class="plate-slots plate-slots-numbers" id="numberSlots">
+            <div class="plate-slot" data-index="0"><span class="slot-ar"></span><span class="slot-en"></span></div>
+            <div class="plate-slot" data-index="1"><span class="slot-ar"></span><span class="slot-en"></span></div>
+            <div class="plate-slot" data-index="2"><span class="slot-ar"></span><span class="slot-en"></span></div>
+            <div class="plate-slot" data-index="3"><span class="slot-ar"></span><span class="slot-en"></span></div>
+          </div>
+          <div class="plate-slots plate-slots-letters" id="letterSlots">
+            <div class="plate-slot" data-index="0"><span class="slot-ar"></span><span class="slot-en"></span></div>
+            <div class="plate-slot" data-index="1"><span class="slot-ar"></span><span class="slot-en"></span></div>
+            <div class="plate-slot" data-index="2"><span class="slot-ar"></span><span class="slot-en"></span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Price Section -->
+      <div class="section price-section">
+        <div class="price-banner">
+          <img class="price-bg-img" src="assets/price-bg.svg" alt="">
+          <div class="price-overlay">
+            <div class="price-group">
+              <img class="price-sar-icon" src="assets/sar-symbol.svg" alt="ريال">
+              <input class="price-input" type="text" inputmode="numeric" pattern="[0-9]*" id="priceInput" value="1000"
+                aria-label="السعر بالريال السعودي">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Timer Section -->
+      <div class="section timer-section">
+        <div class="timer-running-row">
+          <div class="timer-display" id="timerDisplay">00:00:00</div>
+          <button type="button" class="timer-stop-btn" id="timerStopBtn" style="display:none" aria-label="إيقاف العداد">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="2" width="12" height="12" rx="2" />
+            </svg>
+          </button>
+        </div>
+        <div class="section-label">الوقت المتبقي</div>
+        <div class="timer-controls" id="timerSetup">
+          <div class="timer-inputs">
+            <input type="number" id="timerHours" min="0" max="999" value="0" inputmode="numeric" aria-label="ساعات">
+            <span class="timer-colon">:</span>
+            <input type="number" id="timerMinutes" min="0" max="59" value="0" inputmode="numeric" aria-label="دقائق">
+            <span class="timer-colon">:</span>
+            <input type="number" id="timerSeconds" min="0" max="59" value="0" inputmode="numeric" aria-label="ثواني">
+          </div>
+          <div class="timer-buttons">
+            <button type="button" id="timerStartBtn" class="btn btn-primary">ابدأ</button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /upper-panel -->
+    <div class="lower-panel">
+      <!-- Sprint 12: Filter Bar -->
+      <div class="filter-bar" id="filterBar">
+        <button type="button" class="filter-btn active" data-filter="all" aria-label="الكل">
+          <img src="assets/filters/all.svg" alt="الكل">
+        </button>
+        <button type="button" class="filter-btn" data-filter="personal" aria-label="خصوصي بشعار">
+          <img src="assets/filters/personal.svg" alt="خصوصي بشعار">
+        </button>
+        <button type="button" class="filter-btn" data-filter="sport" aria-label="رياضية">
+          <img src="assets/filters/sport.svg" alt="رياضية">
+        </button>
+        <button type="button" class="filter-btn" data-filter="transport" aria-label="مربع أو طولي">
+          <img src="assets/filters/transport.svg" alt="مربع أو طولي">
+        </button>
+      </div>
+
+      <!-- 5. Plate Shape Selector -->
+      <div class="section selector-section">
+        <div class="section-label">اختر شكل اللوحة</div>
+        <div class="selector-scroll" id="plateSelector">
+          <button type="button" class="plate-option active" data-plate-id="plate-1">
+            <img src="assets/plates/plate-1.svg" alt="رياضية ١">
+            <span>رياضية ١</span>
+          </button>
+          <button type="button" class="plate-option" data-plate-id="plate-2">
+            <img src="assets/plates/plate-2.svg" alt="رياضية ٢">
+            <span>رياضية ٢</span>
+          </button>
+          <button type="button" class="plate-option" data-plate-id="plate-3">
+            <img src="assets/plates/plate-3.svg" alt="رياضية ٣">
+            <span>رياضية ٣</span>
+          </button>
+          <button type="button" class="plate-option" data-plate-id="plate-4">
+            <img src="assets/plates/plate-4.svg" alt="رياضية ٤">
+            <span>رياضية ٤</span>
+          </button>
+          <button type="button" class="plate-option" data-plate-id="plate-5">
+            <img src="assets/plates/plate-5.svg" alt="رياضية ٥">
+            <span>رياضية ٥</span>
+          </button>
+          <button type="button" class="plate-option" data-plate-id="plate-6">
+            <img src="assets/plates/plate-6.svg" alt="مربعة ١">
+            <span>مربعة ١</span>
+          </button>
+          <button type="button" class="plate-option" data-plate-id="plate-7">
+            <img src="assets/plates/plate-7.svg" alt="مربعة ٢">
+            <span>مربعة ٢</span>
+          </button>
+          <button type="button" class="plate-option" data-plate-id="plate-8">
+            <img src="assets/plates/plate-8.svg" alt="رياضية ٦">
+            <span>رياضية ٦</span>
+          </button>
+          <button type="button" class="plate-option" data-plate-id="plate-9">
+            <img src="assets/plates/plate-9.svg" alt="رياضية ٧">
+            <span>رياضية ٧</span>
+          </button>
+          <button type="button" class="plate-option" data-plate-id="ar-blue-long">
+            <img src="assets/plates/ar-blue-long.svg" alt="أزرق طويل">
+            <span>أزرق طويل</span>
+          </button>
+          <button type="button" class="plate-option" data-plate-id="ar-blue-wide">
+            <img src="assets/plates/ar-blue-wide.svg" alt="أزرق عريض">
+            <span>أزرق عريض</span>
+          </button>
+          <button type="button" class="plate-option" data-plate-id="ar-green-log">
+            <img src="assets/plates/ar-green-log.svg" alt="أخضر">
+            <span>أخضر</span>
+          </button>
+          <button type="button" class="plate-option" data-plate-id="ar-white-long">
+            <img src="assets/plates/ar-white-long.svg" alt="أبيض طويل">
+            <span>أبيض طويل</span>
+          </button>
+          <button type="button" class="plate-option" data-plate-id="ar-white-wide">
+            <img src="assets/plates/ar-white-wide.svg" alt="أبيض عريض">
+            <span>أبيض عريض</span>
+          </button>
+          <button type="button" class="plate-option" data-plate-id="ar-yellow-logo">
+            <img src="assets/plates/ar-yellow-logo.svg" alt="ذهبي">
+            <span>ذهبي</span>
+          </button>
+          <button type="button" class="plate-option" data-plate-id="en-plate">
+            <img src="assets/plates/en-plate.svg" alt="إنجليزية">
+            <span>إنجليزية</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 6. Input Panel (Sprint 13) -->
+      <div class="section keyboard-section">
+        <div class="section-label">اختر تصميمك المفضل وأكمل البيانات</div>
+        <div class="input-panel">
+          <div class="input-row">
+            <div class="input-slots" id="letterInputDisplay">
+              <div class="input-slot" data-type="letter" data-index="0">
+                <span class="slot-plus">+</span>
+              </div>
+              <div class="input-slot" data-type="letter" data-index="1">
+                <span class="slot-plus">+</span>
+              </div>
+              <div class="input-slot" data-type="letter" data-index="2">
+                <span class="slot-plus">+</span>
+              </div>
+            </div>
+            <span class="input-row-label">الحروف</span>
+          </div>
+          <div class="input-row">
+            <div class="input-slots" id="numberInputDisplay">
+              <div class="input-slot" data-type="number" data-index="0">
+                <span class="slot-plus">+</span>
+              </div>
+              <div class="input-slot" data-type="number" data-index="1">
+                <span class="slot-plus">+</span>
+              </div>
+              <div class="input-slot" data-type="number" data-index="2">
+                <span class="slot-plus">+</span>
+              </div>
+              <div class="input-slot" data-type="number" data-index="3">
+                <span class="slot-plus">+</span>
+              </div>
+            </div>
+            <span class="input-row-label">الأرقام</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /lower-panel -->
+  </div>
+
+  <!-- Keyboard Overlay (Sprint 13) -->
+  <div class="overlay-backdrop" id="overlayBackdrop"></div>
+  <div class="keyboard-overlay" id="keyboardOverlay">
+    <div class="overlay-handle"></div>
+    <div class="overlay-label" id="overlayLabel">الحروف</div>
+    <div class="keyboard-grid letters-grid" id="letterKeyboard">
+      <button type="button" class="key-btn" data-letter-index="0"><img src="assets/letters/ar/a.svg" alt="ا"></button>
+      <button type="button" class="key-btn" data-letter-index="1"><img src="assets/letters/ar/b.svg" alt="ب"></button>
+      <button type="button" class="key-btn" data-letter-index="2"><img src="assets/letters/ar/j.svg" alt="ح"></button>
+      <button type="button" class="key-btn" data-letter-index="3"><img src="assets/letters/ar/d.svg" alt="د"></button>
+      <button type="button" class="key-btn" data-letter-index="4"><img src="assets/letters/ar/r.svg" alt="ر"></button>
+      <button type="button" class="key-btn" data-letter-index="5"><img src="assets/letters/ar/s.svg" alt="س"></button>
+      <button type="button" class="key-btn" data-letter-index="6"><img src="assets/letters/ar/x.svg" alt="ص"></button>
+      <button type="button" class="key-btn" data-letter-index="7"><img src="assets/letters/ar/t.svg" alt="ط"></button>
+      <button type="button" class="key-btn" data-letter-index="8"><img src="assets/letters/ar/e.svg" alt="ع"></button>
+      <button type="button" class="key-btn" data-letter-index="9"><img src="assets/letters/ar/g.svg" alt="ق"></button>
+      <button type="button" class="key-btn" data-letter-index="10"><img src="assets/letters/ar/k.svg" alt="ك"></button>
+      <button type="button" class="key-btn" data-letter-index="11"><img src="assets/letters/ar/l.svg" alt="ل"></button>
+      <button type="button" class="key-btn" data-letter-index="12"><img src="assets/letters/ar/z.svg" alt="م"></button>
+      <button type="button" class="key-btn" data-letter-index="13"><img src="assets/letters/ar/n.svg" alt="ن"></button>
+      <button type="button" class="key-btn" data-letter-index="14"><img src="assets/letters/ar/h.svg" alt="ه"></button>
+      <button type="button" class="key-btn" data-letter-index="15"><img src="assets/letters/ar/u.svg" alt="و"></button>
+      <button type="button" class="key-btn" data-letter-index="16"><img src="assets/letters/ar/v.svg" alt="ى"></button>
+    </div>
+    <div class="keyboard-grid" id="numberKeyboard" style="display:none">
+      <button type="button" class="key-btn" data-number-index="0"><img src="assets/numbers/ar/0.svg" alt="0"></button>
+      <button type="button" class="key-btn" data-number-index="1"><img src="assets/numbers/ar/1.svg" alt="1"></button>
+      <button type="button" class="key-btn" data-number-index="2"><img src="assets/numbers/ar/2.svg" alt="2"></button>
+      <button type="button" class="key-btn" data-number-index="3"><img src="assets/numbers/ar/3.svg" alt="3"></button>
+      <button type="button" class="key-btn" data-number-index="4"><img src="assets/numbers/ar/4.svg" alt="4"></button>
+      <button type="button" class="key-btn" data-number-index="5"><img src="assets/numbers/ar/5.svg" alt="5"></button>
+      <button type="button" class="key-btn" data-number-index="6"><img src="assets/numbers/ar/6.svg" alt="6"></button>
+      <button type="button" class="key-btn" data-number-index="7"><img src="assets/numbers/ar/7.svg" alt="7"></button>
+      <button type="button" class="key-btn" data-number-index="8"><img src="assets/numbers/ar/8.svg" alt="8"></button>
+      <button type="button" class="key-btn" data-number-index="9"><img src="assets/numbers/ar/9.svg" alt="9"></button>
+    </div>
+  </div>
+
+  <!-- Stop confirmation (Sprint 14) -->
+  <div class="confirm-sheet" id="stopConfirmSheet">
+    <div class="overlay-handle"></div>
+    <div class="confirm-message">هل تريد إنهاء المزاد الآن؟</div>
+    <div class="confirm-buttons">
+      <button type="button" class="btn btn-primary" id="confirmEndBtn">إنهاء المزاد</button>
+      <button type="button" class="btn btn-secondary" id="confirmCancelBtn">إلغاء</button>
+    </div>
+  </div>
+
+  <!-- Final result modal (Sprint 14) -->
+  <div class="result-modal" id="resultModal">
+    <div class="result-eyebrow">انتهى المزاد</div>
+    <div class="result-plate-frame">
+      <div class="result-plate-wrap" id="resultPlateWrap"></div>
+    </div>
+    <div class="result-price-block">
+      <div class="result-price-label">السعر النهائي</div>
+      <div class="price-banner result-price-banner">
+        <img class="price-bg-img" src="assets/price-bg.svg" alt="">
+        <div class="price-overlay">
+          <div class="price-group">
+            <img class="price-sar-icon" src="assets/sar-symbol.svg" alt="ريال">
+            <div class="result-price" id="resultPrice"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="btn btn-primary result-close-btn" id="resultCloseBtn">إغلاق وإعادة البدء</button>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch((err) => {
+          console.error('Service worker registration failed:', err);
+        });
+      });
+    }
+  </script>
+</body>
+
+</html>

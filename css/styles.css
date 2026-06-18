@@ -1,0 +1,1198 @@
+  :root {
+    /* Color tokens */
+    --color-bg: #143751;
+    /* lower panel background */
+    --color-bg-upper: #1e476b;
+    /* upper panel background */
+    --color-bg-elevated: #1d3f63;
+    /* cards/inputs */
+    --color-gold: #d4af37;
+    --color-gold-light: #f0d98c;
+    --color-cream: #f4f1ea;
+    /* plate background */
+    --color-text-light: #f4f1ea;
+    --color-text-muted: #d5d5d5;
+    --color-border: #2c4f78;
+    --color-dashed: #d5d5d5;
+
+    /* Spacing */
+    --space-xs: 6px;
+    --space-sm: 12px;
+    --space-md: 20px;
+    --space-lg: 28px;
+
+    /* Radius */
+    --radius-md: 14px;
+    --radius-lg: 22px;
+
+    /* Type */
+    --font-base: 'IBM Plex Sans Arabic', 'Tajawal', 'Segoe UI', sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-base);
+    background: var(--color-bg-upper);
+    color: var(--color-text-light);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 430px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .upper-panel {
+    background: var(--color-bg-upper);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-md) var(--space-lg);
+    border-radius: 0 0 28px 28px;
+  }
+
+  .lower-panel {
+    background: var(--color-bg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-md) var(--space-lg);
+    flex: 1;
+  }
+
+  /* Generic section wrapper */
+  .section {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    gap: var(--space-sm);
+  }
+
+  .section-label {
+    font-size: 14px;
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    text-align: center;
+  }
+
+  /* Placeholder styling - remove once real content is added */
+  .placeholder {
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+    font-size: 13px;
+    text-align: center;
+    padding: var(--space-sm);
+  }
+
+  /* 1. Logo section */
+  .logo-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-xs);
+    padding-top: var(--space-xs);
+  }
+
+  .logo-img {
+    height: 250px;
+    width: auto;
+    display: block;
+    margin-bottom: 3rem;
+  }
+
+  .plate-type-label {
+    display: none;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-text-light);
+    text-align: center;
+  }
+
+  /* 2. Plate display section */
+  .plate-display {
+    position: relative;
+    width: 100%;
+    line-height: 0;
+    margin-bottom: 3rem;
+  }
+
+  .plate-bg-img {
+    width: 100%;
+    display: block;
+  }
+
+  /* Slot overlay positions are tuned per plate shape.
+     Current values match plate-1 (single-row plate with
+     center emblem and KSA strip on the right). */
+  .plate-slots {
+    position: absolute;
+    top: 10%;
+    bottom: 10%;
+    display: flex;
+    justify-content: center;
+    gap: 0.3%;
+  }
+
+  .plate-slots-numbers {
+    left: 1.5%;
+    width: 25%;
+  }
+
+  .plate-slots-letters {
+    left: 65%;
+    width: 25%;
+  }
+
+  /* ===== Per-plate slot position overrides =====
+     Each plate has its own block below. Edit freely —
+     changes to one plate's block do not affect others.
+     top/bottom control vertical position, left/width control
+     horizontal position+size of each slot group. */
+
+  /* رياضية ١ (plate-1) */
+  #plateDisplay.shape-plate-1 .plate-slots-numbers {
+    top: 10%;
+    bottom: 10%;
+    left: 5%;
+    width: 25%;
+  }
+
+  #plateDisplay.shape-plate-1 .plate-slots-letters {
+    top: 10%;
+    bottom: 10%;
+    left: 65%;
+    width: 25%;
+  }
+
+  /* رياضية ٢ (plate-2) */
+  #plateDisplay.shape-plate-2 .plate-slots-numbers {
+    top: 10%;
+    bottom: 10%;
+    left: 5%;
+    width: 25%;
+  }
+
+  #plateDisplay.shape-plate-2 .plate-slots-letters {
+    top: 10%;
+    bottom: 10%;
+    left: 65%;
+    width: 25%;
+  }
+
+  /* رياضية ٣ (plate-3) */
+  #plateDisplay.shape-plate-3 .plate-slots-numbers {
+    top: 10%;
+    bottom: 10%;
+    left: 5%;
+    width: 25%;
+  }
+
+  #plateDisplay.shape-plate-3 .plate-slots-letters {
+    top: 10%;
+    bottom: 10%;
+    left: 65%;
+    width: 25%;
+  }
+
+  /* رياضية ٤ (plate-4) */
+  #plateDisplay.shape-plate-4 .plate-slots-numbers {
+    top: 10%;
+    bottom: 10%;
+    left: 5%;
+    width: 25%;
+  }
+
+  #plateDisplay.shape-plate-4 .plate-slots-letters {
+    top: 10%;
+    bottom: 10%;
+    left: 65%;
+    width: 25%;
+  }
+
+  /* رياضية ٥ (plate-5) */
+  #plateDisplay.shape-plate-5 .plate-slots-numbers {
+    top: 10%;
+    bottom: 10%;
+    left: 5%;
+    width: 25%;
+  }
+
+  #plateDisplay.shape-plate-5 .plate-slots-letters {
+    top: 10%;
+    bottom: 10%;
+    left: 60%;
+    width: 25%;
+  }
+
+  /* مربعة ١ (plate-6) */
+  #plateDisplay.shape-plate-6 .plate-slots-numbers {
+    top: 10%;
+    bottom: 20%;
+    left: 8%;
+    width: 35%;
+
+    .slot-ar {
+      margin-bottom: 10px;
+    }
+
+    .slot-en {
+      margin-top: 10px;
+    }
+  }
+
+  #plateDisplay.shape-plate-6 .plate-slots-letters {
+    top: 10%;
+    bottom: 20%;
+    left: 54%;
+    width: 35%;
+
+    .slot-ar {
+      margin-bottom: 10px;
+    }
+
+    .slot-en {
+      margin-top: 10px;
+    }
+  }
+
+  /* مربعة ٢ (plate-7) */
+  #plateDisplay.shape-plate-7 .plate-slots-numbers {
+    top: 10%;
+    bottom: 20%;
+    left: 8%;
+    width: 35%;
+
+    .slot-ar {
+      margin-bottom: 10px;
+    }
+
+    .slot-en {
+      margin-top: 10px;
+    }
+  }
+
+  #plateDisplay.shape-plate-7 .plate-slots-letters {
+    top: 10%;
+    bottom: 20%;
+    left: 50%;
+    width: 35%;
+
+    .slot-ar {
+      margin-bottom: 10px;
+    }
+
+    .slot-en {
+      margin-top: 10px;
+    }
+  }
+
+  /* رياضية ٦ (plate-8) */
+  #plateDisplay.shape-plate-8 .plate-slots-numbers {
+    top: 10%;
+    bottom: 10%;
+    left: 10%;
+    width: 25%;
+
+    .slot-ar {
+      margin-bottom: 5px;
+    }
+
+    .slot-en {
+      margin-top: 5px;
+    }
+  }
+
+  #plateDisplay.shape-plate-8 .plate-slots-letters {
+    top: 10%;
+    bottom: 10%;
+    left: 65%;
+    width: 25%;
+
+    .slot-ar {
+      margin-bottom: 5px;
+    }
+
+    .slot-en {
+      margin-top: 5px;
+    }
+  }
+
+  /* رياضية ٧ (plate-9) */
+  #plateDisplay.shape-plate-9 .plate-slots-numbers {
+    top: 10%;
+    bottom: 10%;
+    left: 10%;
+    width: 25%;
+
+    .slot-ar {
+      margin-bottom: 5px;
+    }
+
+    .slot-en {
+      margin-top: 5px;
+    }
+  }
+
+  #plateDisplay.shape-plate-9 .plate-slots-letters {
+    top: 10%;
+    bottom: 10%;
+    left: 65%;
+    width: 25%;
+
+    .slot-ar {
+      margin-bottom: 5px;
+    }
+
+    .slot-en {
+      margin-top: 5px;
+    }
+  }
+
+  /* أزرق طويل (ar-blue-long) */
+  #plateDisplay.shape-ar-blue-long .plate-slots-numbers {
+    top: 10%;
+    bottom: 10%;
+    left: 3%;
+    width: 25%;
+  }
+
+  #plateDisplay.shape-ar-blue-long .plate-slots-letters {
+    top: 10%;
+    bottom: 10%;
+    left: 70%;
+    width: 25%;
+  }
+
+  /* أزرق عريض (ar-blue-wide) */
+  #plateDisplay.shape-ar-blue-wide .plate-slots-numbers {
+    top: 38%;
+    bottom: 10%;
+    left: 1%;
+    width: 45%;
+  }
+
+  #plateDisplay.shape-ar-blue-wide .plate-slots-letters {
+    top: 38%;
+    bottom: 10%;
+    left: 48%;
+    width: 50%;
+  }
+
+  /* أخضر (ar-green-log) */
+  #plateDisplay.shape-ar-green-log .plate-slots-numbers {
+    top: 10%;
+    bottom: 10%;
+    left: 2.5%;
+    width: 30%;
+  }
+
+  #plateDisplay.shape-ar-green-log .plate-slots-letters {
+    top: 10%;
+    bottom: 10%;
+    left: 68%;
+    width: 30%;
+  }
+
+  /* أبيض طويل (ar-white-long) */
+  #plateDisplay.shape-ar-white-long .plate-slots-numbers {
+    top: 10%;
+    bottom: 10%;
+    left: 2.5%;
+    width: 30%;
+  }
+
+  #plateDisplay.shape-ar-white-long .plate-slots-letters {
+    top: 10%;
+    bottom: 10%;
+    left: 68%;
+    width: 30%;
+  }
+
+  /* أبيض عريض (ar-white-wide) */
+  #plateDisplay.shape-ar-white-wide .plate-slots-numbers {
+    top: 38%;
+    bottom: 10%;
+    left: 1%;
+    width: 45%;
+  }
+
+  #plateDisplay.shape-ar-white-wide .plate-slots-letters {
+    top: 38%;
+    bottom: 10%;
+    left: 48%;
+    width: 50%;
+  }
+
+  /* ذهبي (ar-yellow-logo) */
+  #plateDisplay.shape-ar-yellow-logo .plate-slots-numbers {
+    top: 10%;
+    bottom: 10%;
+    left: 3.5%;
+    width: 30%;
+  }
+
+  #plateDisplay.shape-ar-yellow-logo .plate-slots-letters {
+    top: 10%;
+    bottom: 10%;
+    left: 65%;
+    width: 30%;
+  }
+
+  /* إنجليزية (en-plate) */
+  #plateDisplay.shape-en-plate .plate-slots-numbers {
+    top: 10%;
+    bottom: 10%;
+    left: 4%;
+    width: 35%;
+  }
+
+  #plateDisplay.shape-en-plate .plate-slots-letters {
+    top: 10%;
+    bottom: 10%;
+    left: 62%;
+    width: 35%;
+  }
+
+  .plate-slot {
+    /* Fixed size, NOT flex:1 — a filled slot must stay the same size
+       whether its siblings are present or collapsed. flex:1 would let
+       remaining slots stretch to fill the space vacated by collapsed
+       siblings, oversizing the characters inside them. The actual
+       per-slot width is set below, scoped separately for the numbers
+       group (4 slots) and letters group (3 slots), since both groups
+       share the same 25%-wide container but divide it differently. */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* Very faint guide for empty slots — admin usability only, invisible on real plate */
+    border: 1px dashed rgba(213, 213, 213, 0.25);
+    border-radius: 2px;
+    min-width: 0;
+    cursor: pointer;
+    background: transparent;
+  }
+
+  /* Numbers group: 4 slots sharing the container's width — frozen at
+     the size each slot would have when ALL 4 are present, so a slot
+     never grows just because a sibling collapsed. */
+  .plate-slots-numbers .plate-slot {
+    flex: 0 0 24%;
+  }
+
+  /* Letters group: 3 slots sharing the same width container, so each
+     slot is proportionally larger than a numbers slot. */
+  .plate-slots-letters .plate-slot {
+    flex: 0 0 32%;
+  }
+
+  /* Filled slots: NO box, NO background — characters sit on plate surface */
+  .plate-slot.filled {
+    border: none;
+    background: transparent;
+  }
+
+  /* Trailing empty slots (e.g. a plate with 2 letters instead of the
+     max 3) are removed from the flex line once input is finalized, so
+     justify-content: center on .plate-slots centers the actual filled
+     characters as a group instead of leaving a blank slot's worth of
+     space dangling after them. Applied/removed by app.js.
+     Selector includes .plate-slots-numbers/.plate-slots-letters so its
+     specificity reliably beats the per-group width rules above,
+     regardless of declaration order. */
+  .plate-slots-numbers .plate-slot.empty-collapsed,
+  .plate-slots-letters .plate-slot.empty-collapsed {
+    flex: 0 0 0%;
+    width: 0;
+    min-width: 0;
+    margin: 0;
+    border: none;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .slot-ar,
+  .slot-en {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    transition: flex 0.15s;
+  }
+
+  /* Dual mode: Arabic (upper) 60%, English (lower) 34%, gap 6% */
+  .slot-ar {
+    flex: 0 0 60%;
+  }
+
+  .slot-en {
+    flex: 0 0 34%;
+  }
+
+  /* AR-only: single character, expands to fill slot */
+  #plateDisplay.letters-ar .slot-en {
+    display: none;
+  }
+
+  #plateDisplay.letters-ar .slot-ar {
+    flex: 0 0 88%;
+  }
+
+  /* EN-only: single character, expands to fill slot */
+  #plateDisplay.letters-en .slot-ar {
+    display: none;
+  }
+
+  #plateDisplay.letters-en .slot-en {
+    flex: 0 0 88%;
+  }
+
+  /* Character sizes tuned to reference plates:
+     AR row (~35px tall): image fills ~88% → ~31px — matches Arabic numerals/letters on real plates
+     EN row (~22px tall): image fills ~92% → ~20px — matches Western sub-labels */
+  .slot-ar img {
+    max-width: 90%;
+    max-height: 88%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .slot-en img {
+    max-width: 86%;
+    max-height: 92%;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* AR-only & EN-only: single character can be bigger, since there's
+     only one row instead of two stacked rows sharing the slot height */
+  #plateDisplay.letters-ar .slot-ar img {
+    max-height: 78%;
+    max-width: 92%;
+  }
+
+  #plateDisplay.letters-en .slot-en img {
+    max-height: 82%;
+    max-width: 88%;
+  }
+
+  /* 3. Price section */
+  .price-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .price-banner {
+    position: relative;
+    width: 70%;
+    line-height: 0;
+    margin-bottom: 3rem;
+  }
+
+  .price-bg-img {
+    width: 100%;
+    display: block;
+    filter:
+      drop-shadow(0 0 5px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 1px rgba(0, 0, 0, 0.30));
+  }
+
+  .price-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    direction: ltr;
+  }
+
+  .price-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .price-sar-icon {
+    height: 28px;
+    width: auto;
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .price-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: clamp(22px, 7vw, 34px);
+    font-weight: 800;
+    color: #3a2e00;
+    font-family: var(--font-base);
+    direction: ltr;
+    width: 5ch;
+    min-width: 2ch;
+    max-width: 10ch;
+    text-align: left;
+    padding: 0;
+    flex-shrink: 0;
+  }
+
+  .price-input:focus-visible {
+    outline: 2px solid rgba(58, 46, 0, 0.35);
+    border-radius: 4px;
+  }
+
+  .price-input::-webkit-outer-spin-button,
+  .price-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* 4. Timer section */
+  .timer-running-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+  }
+
+  .timer-display {
+    font-family: 'Courier New', monospace;
+    font-size: clamp(32px, 11vw, 46px);
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: var(--color-gold-light);
+    direction: ltr;
+  }
+
+  .timer-stop-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--color-gold);
+    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    padding: 0;
+  }
+
+  .timer-stop-btn svg {
+    width: 16px;
+    height: 16px;
+    fill: var(--color-gold-light);
+  }
+
+  .timer-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .timer-inputs {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    direction: ltr;
+  }
+
+  .timer-inputs input {
+    width: 56px;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-text-light);
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 8px 4px;
+  }
+
+  .timer-inputs input:focus-visible {
+    outline: 2px solid var(--color-gold);
+  }
+
+  .timer-inputs input::-webkit-outer-spin-button,
+  .timer-inputs input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .timer-section {
+    gap: var(--space-xs);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-text-muted);
+  }
+
+  .timer-buttons {
+    display: flex;
+    width: 100%;
+    gap: var(--space-sm);
+  }
+
+  .btn {
+    flex: 1;
+    border: none;
+    border-radius: 8px;
+    padding: 9px 16px;
+    font-family: var(--font-base);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background: #143751;
+    color: var(--color-text-light);
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    font-weight: 700;
+  }
+
+  .btn-secondary {
+    background: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-light);
+  }
+
+  .btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .timer-inputs input:disabled {
+    opacity: 0.6;
+  }
+
+  /* Sprint 12/14: Filter bar — all 4 pills visible, no scroll */
+  .filter-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4px;
+    direction: rtl;
+    width: 100%;
+  }
+
+  .filter-btn {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    opacity: 0.42;
+    transition: opacity 0.15s;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .filter-btn.active {
+    opacity: 1;
+  }
+
+  .filter-btn img {
+    height: 34px;
+    width: 100%;
+    max-width: 120px;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* 5. Plate shape selector (horizontal scroll) */
+  .selector-section {
+    overflow: hidden;
+  }
+
+  .selector-scroll {
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    gap: var(--space-sm);
+    overflow-x: auto;
+    padding-bottom: var(--space-xs);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    border-top: 1px dashed var(--color-dashed);
+    border-bottom: 1px dashed var(--color-dashed);
+    padding-top: var(--space-xs);
+  }
+
+  .selector-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .plate-option {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    background: var(--color-bg-elevated);
+    border: 2px solid transparent;
+    border-radius: var(--radius-md);
+    padding: var(--space-xs);
+    color: var(--color-text-muted);
+    font-size: 11px;
+    font-family: var(--font-base);
+    cursor: pointer;
+  }
+
+  .plate-option img {
+    height: 46px;
+    width: auto;
+    display: block;
+    border-radius: 0;
+  }
+
+  .plate-option.active {
+    border-color: transparent;
+    color: var(--color-gold-light);
+  }
+
+  .plate-option.active img {
+    opacity: 1;
+  }
+
+  /* 6. Input panel + overlay keyboard */
+  .keyboard-section {
+    gap: var(--space-sm);
+  }
+
+  .input-panel {
+    background: transparent;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .input-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    direction: rtl;
+  }
+
+  .input-row-label {
+    font-size: 13px;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-width: 46px;
+  }
+
+  .input-slots {
+    display: flex;
+    gap: var(--space-xs);
+    flex: 1;
+    direction: ltr;
+  }
+
+  .input-slot {
+    flex: 1;
+    aspect-ratio: 1 / 1;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1.5px dashed rgba(255, 255, 255, 0.22);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    min-width: 0;
+    gap: 2px;
+  }
+
+  .input-slot.filled {
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.38);
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .input-slot .slot-char-img {
+    width: 55%;
+    height: 44%;
+    object-fit: contain;
+  }
+
+  .input-slot .slot-en-img {
+    width: 40%;
+    height: 32%;
+    object-fit: contain;
+  }
+
+  .input-slot .slot-plus {
+    color: rgba(255, 255, 255, 0.35);
+    font-size: clamp(18px, 6vw, 26px);
+    font-weight: 300;
+    line-height: 1;
+  }
+
+  /* Timer fullscreen mode */
+  .upper-panel.timer-running {
+    min-height: 100vh;
+    justify-content: center;
+    padding-bottom: 40px;
+  }
+
+  .lower-panel.timer-running {
+    display: none;
+  }
+
+  /* Slide-up overlay */
+  .overlay-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+    display: none;
+  }
+
+  .overlay-backdrop.open {
+    display: block;
+  }
+
+  .keyboard-overlay {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(100%);
+    width: 100%;
+    max-width: 430px;
+    background: var(--color-bg);
+    border-radius: 24px 24px 0 0;
+    padding: 12px var(--space-md) 36px;
+    transition: transform 0.28s cubic-bezier(0.32, 0, 0.67, 0);
+    z-index: 100;
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.45);
+  }
+
+  .keyboard-overlay.open {
+    transform: translateX(-50%) translateY(0);
+    transition-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+  }
+
+  .overlay-handle {
+    width: 40px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 2px;
+    margin: 0 auto 14px;
+  }
+
+  .overlay-label {
+    text-align: center;
+    font-size: 13px;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-sm);
+  }
+
+  .keyboard-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--space-xs);
+  }
+
+  .keyboard-grid.letters-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .key-btn {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 6px;
+    cursor: pointer;
+  }
+
+  .key-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: invert(1);
+  }
+
+  .key-btn:active {
+    background: var(--color-border);
+  }
+
+  .key-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+
+  /* ===== Stop confirmation sheet (Sprint 14) =====
+     Same slide-up mechanism as .keyboard-overlay, shares #overlayBackdrop. */
+  .confirm-sheet {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(100%);
+    width: 100%;
+    max-width: 430px;
+    background: var(--color-bg);
+    border-radius: 24px 24px 0 0;
+    padding: 12px var(--space-md) var(--space-lg);
+    transition: transform 0.28s cubic-bezier(0.32, 0, 0.67, 0);
+    z-index: 100;
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.45);
+    text-align: center;
+  }
+
+  .confirm-sheet.open {
+    transform: translateX(-50%) translateY(0);
+    transition-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+  }
+
+  .confirm-message {
+    color: var(--color-text-light);
+    font-size: 17px;
+    font-weight: 500;
+    margin: var(--space-sm) 0 var(--space-md);
+  }
+
+  .confirm-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .btn-secondary {
+    background: var(--color-bg-elevated);
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border);
+  }
+
+  /* ===== Final result modal (Sprint 14) =====
+     Centered, not a bottom-sheet — this is the "show to the audience"
+     screen, so it takes over fully rather than sliding up from an edge. */
+  .result-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 101;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-md);
+    padding: var(--space-lg);
+    background: var(--color-bg-upper);
+  }
+
+  .result-modal.open {
+    display: flex;
+  }
+
+  .result-eyebrow {
+    color: var(--color-gold-light);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* Frame gives the plate some presence on an otherwise plain dark
+     screen — a soft card behind it, rather than the plate floating
+     directly on the panel background. Scaled up (~2x the previous
+     max-width) with generous padding so the plate has real breathing
+     room inside the card instead of touching its edges. */
+  .result-plate-frame {
+    width: 100%;
+    max-width: 680px;
+    padding: var(--space-lg);
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  /* No forced aspect-ratio: the cloned .plate-display sizes itself
+     to its own image's natural proportions (same as the live view),
+     so the wrap can never show empty space below the plate. */
+  .result-plate-wrap {
+    width: 100%;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--color-cream);
+  }
+
+  /* The plate markup is cloned in here at result time, so it inherits
+     .plate-display / .plate-slots / .shape-* rules automatically — no
+     separate positioning rules needed for each plate shape. The clone
+     also inherits .plate-display's margin-bottom (meant for spacing in
+     the normal page flow), which would otherwise leave empty space
+     below the plate inside this frame, so it's zeroed here. */
+  .result-plate-wrap .plate-display {
+    margin-bottom: 0;
+  }
+
+  .result-price-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    width: 100%;
+  }
+
+  .result-price-label {
+    color: var(--color-text-muted);
+    font-size: 14px;
+  }
+
+  /* Reuses .price-banner/.price-bg-img/.price-overlay/.price-group from
+     the main screen so the result modal's price area matches it exactly
+     (same banner artwork, same layout) — just sized up for this context. */
+  .result-price-banner {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  /* .result-price replaces .price-input here since this is a static
+     display, not an editable field — same color/weight/font so it
+     reads identically against the banner artwork. */
+  .result-price {
+    font-size: clamp(28px, 8vw, 40px);
+    font-weight: 800;
+    color: #3a2e00;
+    font-family: var(--font-base);
+    direction: ltr;
+  }
+
+  /* Override the shared .btn's flex:1 (meant for buttons inside a flex
+     row, like .timer-buttons) — inside this column layout, flex:1 was
+     stretching the button to fill the remaining vertical space. */
+  .result-close-btn {
+    flex: 0 0 auto;
+    width: auto;
+    min-width: 220px;
+    padding: 14px 28px;
+    margin-top: var(--space-sm);
+  }
