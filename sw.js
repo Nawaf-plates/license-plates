@@ -5,7 +5,7 @@
 //  - Cross-origin requests (Google Fonts): cache-as-you-go, so once the
 //    fonts are fetched the first time online, they keep working offline too.
 
-const CACHE_VERSION = 'v3';
+const CACHE_VERSION = 'v4';
 const CACHE_NAME = 'plate-auction-' + CACHE_VERSION;
 
 const PRECACHE_URLS = [

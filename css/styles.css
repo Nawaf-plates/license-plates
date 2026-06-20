@@ -283,30 +283,30 @@
   #plateDisplay.shape-plate-7 .plate-slots-numbers {
     top: 10%;
     bottom: 20%;
-    left: 8%;
+    left: 9%;
     width: 35%;
 
     .slot-ar {
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
 
     .slot-en {
-      margin-top: 10px;
+      margin-top: 15px;
     }
   }
 
   #plateDisplay.shape-plate-7 .plate-slots-letters {
     top: 10%;
     bottom: 20%;
-    left: 50%;
+    left: 54%;
     width: 35%;
 
     .slot-ar {
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
 
     .slot-en {
-      margin-top: 10px;
+      margin-top: 15px;
     }
   }
 
