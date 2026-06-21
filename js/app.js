@@ -558,6 +558,14 @@ function isAuctionLive() {
     uncollapseLetterSlots();
   }
 
+  // Clears just the one tapped slot (e.g. fixing a single wrong letter)
+  // without touching any other already-entered letters.
+  function clearSingleLetterSlot(index) {
+    letterSlotState[index] = null;
+    renderLetterSlots();
+    uncollapseLetterSlots();
+  }
+
   // --- Input display sync ---
   const letterInputSlots = Array.from(
     document.querySelectorAll('#letterInputDisplay .input-slot'),
@@ -593,7 +601,7 @@ function isAuctionLive() {
   letterInputSlots.forEach((el, i) => {
     el.addEventListener('click', () => {
       if (letterSlotState[i] !== null) {
-        clearLetterSlotsFrom(i);
+        clearSingleLetterSlot(i);
         renderLetterInputDisplay();
       } else {
         uncollapseLetterSlots();
@@ -617,7 +625,7 @@ function isAuctionLive() {
       // don't let a tap clear the entered letters mid-auction.
       if (isAuctionLive()) return;
       if (letterSlotState[i] !== null) {
-        clearLetterSlotsFrom(i);
+        clearSingleLetterSlot(i);
         renderLetterInputDisplay();
       }
     });
@@ -765,6 +773,14 @@ function isAuctionLive() {
     uncollapseNumberSlots();
   }
 
+  // Clears just the one tapped digit (e.g. fixing a single wrong
+  // number) without touching any other already-entered digits.
+  function clearSingleNumberSlot(index) {
+    numberSlotState[index] = null;
+    renderNumberSlots();
+    uncollapseNumberSlots();
+  }
+
   // --- Input display sync ---
   const numberInputSlots = Array.from(
     document.querySelectorAll('#numberInputDisplay .input-slot'),
@@ -796,7 +812,7 @@ function isAuctionLive() {
   numberInputSlots.forEach((el, i) => {
     el.addEventListener('click', () => {
       if (numberSlotState[i] !== null) {
-        clearNumberSlotsFrom(i);
+        clearSingleNumberSlot(i);
         renderNumberInputDisplay();
       } else {
         uncollapseNumberSlots();
@@ -820,7 +836,7 @@ function isAuctionLive() {
       // Same as the letter slots: read-only preview during a live auction.
       if (isAuctionLive()) return;
       if (numberSlotState[i] !== null) {
-        clearNumberSlotsFrom(i);
+        clearSingleNumberSlot(i);
         renderNumberInputDisplay();
       }
     });

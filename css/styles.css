@@ -917,7 +917,7 @@
     display: flex;
     gap: var(--space-xs);
     flex: 1;
-    direction: ltr;
+    direction: rtl;
   }
 
   .input-slot {
@@ -1042,6 +1042,11 @@
     border-radius: var(--radius-md);
     padding: 6px;
     cursor: pointer;
+    /* Safari/WebKit gives grid items min-width:auto by default, which
+       lets the button's image push the column wider than its 1fr share
+       and overflow off the right edge on iPhone. Reset it. */
+    min-width: 0;
+    min-height: 0;
   }
 
   .key-btn img {
